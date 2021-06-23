@@ -1,0 +1,16 @@
+on: [push]
+
+jobs:
+    hello_world:
+      runs-on: ubuntu
+      name: A job to say hello
+      steps: 
+        - name: checkout 
+          uses: actions/checkout@v2
+        - name: action step
+          id: hello 
+          uses: ./
+          with: 
+            who_to_greet: 'kushal'
+        - name: get o/p line
+          run: echo "the time was ${{steps.hello.outputs.time}}"
